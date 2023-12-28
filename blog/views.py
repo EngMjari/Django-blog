@@ -25,13 +25,3 @@ def categoryView(request, slug="all"):
     return render(request, template, context)
 
 
-def LoginView(request):
-    template = "pages/login.html"
-    context = {}
-    return render(request, template, context)
-
-
-def registerView(request):
-    template = "pages/register.html"
-    context = {}
-    return render(request, template, context)

@@ -92,17 +92,17 @@
                 <hr class="dropdown-divider">
               </li>
               <li>
-                <a class="dropdown-item" href="#">خروج</a>
+                <a class="dropdown-item" href="{% url 'logout' %}">خروج</a>
               </li>
             </ul>
           </div>
         {% else %}
           <div class="text-end">
-            {% url 'loginPage' as url %}
+            {% url 'login' as url %}
             <a type="button"
                href="{{ url }}"
                class="btn btn-outline-success me-2 {% if request.path == url %}active disabled{% endif %}">ورود</a>
-            {% url 'registerPage' as url %}
+            {% url 'register' as url %}
             <a type="button"
                href="{{ url }}"
                class="btn btn-warning {% if request.path == url %}active disabled{% endif %}">ثبت نام</a>
