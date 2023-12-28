@@ -14,11 +14,14 @@
     {% endblock head %}
   </head>
   <body>
-    {% include 'components/navbar.html' %}
+    <header class="mb-3 border-bottom">
+      {% include "components/navbar.html" %}
+    </header>
     {% block body %}
     {% endblock body %}
     {% block script %}
     {% endblock script %}
+    <script src="{% static 'css/popper.min.js' %}"></script>
     <script src="{% static 'bootstrap-5.2.3-dist/js/bootstrap.min.js' %}"></script>
   </body>
 </html>
