@@ -1,16 +1,29 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.text import slugify
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=50)
-    slug = models.SlugField()
+    name = models.CharField(max_length=20, unique=True)
+    slug = models.SlugField(
+        max_length=20,
+        unique=True,
+    )
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        print(slugify(self.name))
+        super(Category, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
 
     def __unicode__(self):
         return self.name
+
+    class Meta:
+        verbose_name = "دسته بندی"
+        verbose_name_plural = "دسته بندی ها"
 
 
 class BlogPost(models.Model):
@@ -28,3 +41,7 @@ class BlogPost(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    class Meta:
+        verbose_name = "پست"
+        verbose_name_plural = "پست ها"
