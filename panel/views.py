@@ -3,7 +3,7 @@ from django.shortcuts import render
 
 
 def panelView(request):
-  template = 'admin/adminPanel'
+  template = 'admin/adminPanel.html'
   context = {
     
   }
