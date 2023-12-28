@@ -21,10 +21,11 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           {% url 'Homepage' as url %}
-          <a class="nav-link {% if request.path == url %}active{% endif %}" aria-current="page" href="{{ url }}">خانه</a>
+          <a class="nav-link {% if request.path == url %}active disabled{% endif %}" aria-current="page" href="{{ url }}">خانه</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">بلاگ</a>
+          {% url 'blogPage' as url %}
+          <a class="nav-link {% if request.path == url %}active disabled{% endif %}" href="{{ url }}">بلاگ</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle"
@@ -35,17 +36,17 @@
              aria-expanded="false">موضوعات</a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
-              <a class="dropdown-item" href="#">تکنولوژی</a>
+              <a class="dropdown-item" href="{% url 'categoryPage' 'teq' %}">تکنولوژی</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">اخبار</a>
+              <a class="dropdown-item" href="{% url 'categoryPage' 'new' %}">اخبار</a>
             </li>
             <li>
               <hr class="dropdown-divider">
             </li>
             <li>
 
-              <a class="dropdown-item" href="#">همه موضوعات</a>
+              <a class="dropdown-item" href="{% url 'categoryPage' 'all' %}">همه موضوعات</a>
             </li>
           </ul>
         </li>
@@ -88,8 +89,10 @@
           </div>
         {% else %}
           <div class="text-end">
-            <button type="button" class="btn btn-outline-success me-2">ورود</button>
-            <button type="button" class="btn btn-warning">ثبت نام</button>
+            {% url 'loginPage' as url %}
+            <a type="button" href="{{ url }}" class="btn btn-outline-success me-2 {% if request.path == url %}active disabled{% endif %}">ورود</a>
+            {% url 'registerPage' as url %}
+            <a type="button" href="{{ url }}" class="btn btn-warning {% if request.path == url %}active disabled{% endif %}">ثبت نام</a>
           </div>
         {% endif %}
       </ul>
