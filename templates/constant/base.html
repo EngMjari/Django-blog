@@ -1,8 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="{% static 'bootstrap-5.2.3-dist/css/bootstrap.rtl.min.css' %}">
     <title>
       {% block title %}
       {% endblock title %}
@@ -11,9 +14,11 @@
     {% endblock head %}
   </head>
   <body>
+    {% include 'components/navbar.html' %}
     {% block body %}
     {% endblock body %}
     {% block script %}
     {% endblock script %}
+    <script src="{% static 'bootstrap-5.2.3-dist/js/bootstrap.min.js' %}"></script>
   </body>
 </html>
