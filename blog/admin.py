@@ -11,4 +11,4 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(BlogPost)
 class BlogPostAdmin(admin.ModelAdmin):
-  list_display = ('date_created', 'author', 'title', 'context', 'is_published', 'date_published', 'image', 'slug')
+  list_display = ('date_created', 'author', 'title', 'context', 'is_published', 'date_published', 'image')

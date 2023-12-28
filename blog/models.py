@@ -1,19 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils.text import slugify
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=20, unique=True)
+    name = models.CharField(max_length=20, unique=True, verbose_name="نام")
     slug = models.SlugField(
         max_length=20,
         unique=True,
+        blank=False,
+        null=False,
+        verbose_name="اسلاگ"
     )
-
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
-        print(slugify(self.name))
-        super(Category, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
@@ -34,7 +31,6 @@ class BlogPost(models.Model):
     is_published = models.BooleanField(default=False)
     date_published = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to="post-image/")
-    slug = models.SlugField()
 
     def __str__(self):
         return self.title
